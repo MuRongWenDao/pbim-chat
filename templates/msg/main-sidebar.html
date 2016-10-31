@@ -1,0 +1,53 @@
+<div class="sidebar_logo">
+
+</div>
+<div class="sidebar_user">
+    <img src="/static/msg/images/sidebar_user.jpg" />
+    <div class="s_user_text">
+        <h4>慕容小花</h4> 高级开发工程师
+    </div>
+</div>
+<div class="sidebar_menu_list">
+    <ul class="s_menu_list">
+        <li>
+            <a href="index"  class="isChild">
+                <i><img src="/static/msg/images/news.png"> </i>
+                <span>聊天</span>
+            </a>
+        </li>
+        <li>
+            <a href="contacts" class="isChild">
+                <i><img src="/static/msg/images/contacts.png"> </i>
+                <span>通讯录</span>
+            </a>
+        </li>
+        <li>
+            <a href="new_group" class="add_group isChild">
+                <i><img src="/static/msg/images/add.png"> </i>
+                <span>添加讨论组</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="sildebar_tools">
+    <a href="#"><img src="/static/msg/images/more.png" /></a>
+</div>
+<script type="text/javascript">
+    $(function () {
+        //左选中菜单栏状态
+        $(".s_menu_list>li").click(function () {
+            $(".s_menu_list>li").removeClass("active");
+            $(this).addClass("active");
+	    });
+
+        var url=document.location.href;
+        var li_active = url.split('/')[3];
+        $(".s_menu_list>li").each(function () {
+
+            var this_href = $(this).find("a").attr('href');
+            if(li_active == this_href){
+                $(this).addClass("active");
+            }
+        })
+    })
+</script>

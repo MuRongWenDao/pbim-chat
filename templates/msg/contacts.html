@@ -1,0 +1,202 @@
+{% extends "msg/base.html" %}
+{% block title %}
+通讯录
+{% endblock %}
+{% block maincontent%}
+<link rel="stylesheet" href="{{url_for('static', filename='msg/css/contacts.css')}}">
+    <div class="msg_wrap">
+        <div class="main_sidebar">
+            {% include 'msg/main-sidebar.html' %}
+        </div>
+
+        <div class="main_content">
+            <!-- 联系人列表区域 -->
+            <div class="contact_area">
+                <div class="area_shadow"></div>
+                <div class="contact_search">
+
+                    <div class="contact_key input-group">
+
+                            <span class="input-group-btn">
+                                <button type="button" name="search" class="btn btn-flat">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            <input class="contact_sk" id="search_val" type="text" name="q"  placeholder="按关键字查找">
+                    </div>
+
+                </div>
+                <div class="contact_list optiscroll" id="group_container">
+
+                    <div class="work_group">
+                        <div class="contact_title">
+                            <img src="/static/msg/images/qiye.png" />
+                            <span>工作群组</span>
+                        </div>
+                        <div class="work_group_list">
+                            <ul  data-bind = "template:{name:'work_group_template', foreach: group_model.group_work}">
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="discussion_group is_parent">
+                        <div class="contact_title"  onclick="menu_toggle(this)">
+                            <img src="/static/msg/images/qunzu.png" />
+                            <span>群讨论组</span>
+                            <span class="sub_title">5个群组</span>
+                            <div class="fa_caret">
+                                <i class="fa fa-caret-btn"></i>
+                            </div>
+                        </div>
+                        <div class="discussion_group_list sub_list">
+                            <ul>
+                                <!--ko foreach:group_model.group_discussion -->
+                                <li onclick="jump_profile(this)"><i class="fa fa-minus"></i><span data-bind="text:group_dis_name"></span></li>
+                                <!-- /ko -->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="friend_list is_parent">
+
+                        <div class="contact_title"  onclick="menu_toggle(this)">
+                            <img src="/static/msg/images/contacts-more.png" />
+                            <span>联系人</span>
+                            <span class="sub_title">共135人</span>
+                            <div class="fa_caret">
+                                <i class="fa fa-caret-btn"></i>
+                            </div>
+                        </div>
+
+                        <div class="member_list sub_list">
+                            <ul  data-bind="foreach: group_friend">
+                                <li onclick="jump_profile(this)">
+                                    <div class="friend_user_img">
+                                        <img src="/static/msg/images/one.png"/>
+                                    </div>
+                                    <div class="friend_user_content">
+                                        <div class="friend_user_name"  data-bind="text:group_fri_name"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 联系人列表区域结束 -->
+
+            <!-- 内容显示区域开始 -->
+            <div class="content_area"  id="contact_profile_container">
+                <div class="area_shadow"></div>
+                <div class="knock_bind" data-bind="foreach: member_list">
+                    <div class="c_area_top">
+                        <div class="c_area_title"> <h4 class="text-center" data-bind="text: group_name"></h4></div>
+                    </div>
+
+
+
+                    <!-- ko if: contact_flag == 0-->
+                        <div class="c_area_body">    </div>
+                        <div class="c_area_foot">    </div>
+                    <!-- /ko -->
+
+                    <!-- ko if: contact_flag == 2-->
+                        <div class="c_area_body">
+                            <div class="contact_profile">
+                                <ul data-bind="foreach: member_data">
+                                    <li>
+                                        <img src="/static/msg/images/user8-128x128.jpg" alt="">
+                                        <div class="name"><span data-bind="text:member_name"></span></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="c_area_foot">
+                            <a href="index"  type="button" class="btn foot_btn">进入聊天</a>
+                        </div>
+
+                    <!-- /ko -->
+
+                    <!-- ko if:contact_flag == 1-->
+
+                    <div class="s_area_body">
+                        <div class="s_contact_profile">
+                            <img src="/static/msg/images/user8-128x128.jpg" alt="">
+                            <div class="s_name"><span data-bind="text: member_name"></span></div>
+                        </div>
+                    </div>
+                    <div class="c_area_foot">
+                        <a href="index"  type="button" class="btn foot_btn">发送消息</a>
+                    </div>
+
+                    <!-- /ko -->
+
+               </div>
+
+
+            </div>
+            <!-- 内容显示区域结束 -->
+        </div>
+    </div>
+    <!--工作群组模板 -->
+    <script type="text/html" id="work_group_template">
+        <li onclick="work_group_toggle(event)">
+            <div class="project_area">
+                <div class="project_img">
+                    <img src="/static/msg/images/xiangmuzu.png" />
+                </div>
+                <div class="project_text">
+                    <h5 data-bind="text: work_group_name"></h5>
+                    <span data-bind = "text: work_group_des"></span>
+                </div>
+                <div class="fa_caret">
+                    <i class="fa fa-caret-btn"></i>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="sub_project_list">
+                <ul>
+                    <!-- ko foreach: work_group_members -->
+                    <li onclick="jump_profile(this)"><i class="fa fa-minus"></i><span data-bind = "text:mem_name"></span></li>
+                    <!-- /ko -->
+                </ul>
+            </div>
+        </li>
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+        ko.applyBindings(group_model,$("#group_container")[0]);
+        ko.applyBindings(profile_model ,$("#contact_profile_container")[0]);
+
+    })
+      //临时数据，通讯录列表
+    var work_data = [
+        {work_group_name:"苏州万琦威电子股份有限公司1", work_group_des:"北京壹号项目/舟山万达项目", work_group_members:[{id:'1-1',mem_name:'建筑设计规范交流群'},{id:'1-3',mem_name:'项目施工图纸设计交流群'},{id:'1-3',mem_name:'材料供应价格讨论群'}] }
+    ];
+    var discussion_data = [
+        {group_dis_id:"group_dis_1",group_dis_name:"项目施工图纸设计交流群2"},{group_dis_id:"group_dis_2",group_dis_name:"项目施工图纸设计交流群2"}
+    ];
+    var friend_data = [
+        {group_fri_name: "杨崇元1", group_fri_msg:"这里是消息内容1", group_fri_time:"2016-10-25", group_fri_num: "9"}, {group_fri_name: "杨崇元2"}
+    ];
+
+    var member_data = [
+        {contact_flag: 0, group_name:""},
+        {#{contact_flag: 1, group_name:"",member_name:"张建龙" },
+        {contact_flag: 2, group_name:"讨论组", member_data:[{member_name:'杨崇元1'},{member_name:'杨崇元2'},{member_name:'杨崇元3'},{member_name:'杨崇元4'}]}#}
+    ]
+    var group_model = {
+        group_work: ko.observableArray(work_data),
+        group_discussion: ko.observableArray(discussion_data),
+        group_friend: ko.observableArray(friend_data),
+
+    };
+    var profile_model = {
+        member_list: ko.observable(member_data),
+
+    }
+
+    </script>
+{% endblock %}

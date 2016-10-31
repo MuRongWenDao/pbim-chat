@@ -1,0 +1,27 @@
+/*
+create file ZhangQL
+2016-10-11
+
+ */
+@charset "utf-8";
+/* CSS Document */
+
+.msg_wrap{
+    width: 1000px;
+    margin: auto;
+    position: relative;
+    margin-top: 58px;
+    height: 632px;
+    overflow: hidden;
+}
+.main_sidebar{
+    width: 160px;
+    min-height: 100%;
+    float: left;
+    background-color: #22beef
+}
+.main_content{
+    width: 840px;
+    min-height: 100%;
+    float: left;
+}

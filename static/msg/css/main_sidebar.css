@@ -1,0 +1,111 @@
+/*
+create file ZhangQL
+2016-10-11
+
+ */
+@charset "utf-8";
+/* CSS Document */
+
+.sidebar_logo{
+    width: 160px;
+    height: 62px;
+    background-color: #0cb0e3;
+    background-image: url("/static/msg/images/logo.jpg");
+    background-repeat: no-repeat;
+}
+
+/*.sidebar_user*/
+.sidebar_user{
+    width: 160px;
+    height: 106px;
+    padding:34px 10px 0px 10px;
+    color: #3ffaed;
+    font-size: 12px;
+}
+    .sidebar_user>img{
+        width: 48px;
+        height: 48px;
+        float: left;
+        margin-right: 5px;
+    }
+    .s_user_text{
+        float: left;
+        width: 87px;
+        max-height: 40px;
+        overflow: hidden;
+    }
+        .s_user_text>h4{
+            padding:0px;
+            margin:5px 0px;
+            font-size: 14px;
+            color: #ffffff;
+        }
+/*.sidebar_user*/
+
+/*.sidebar_menu_list*/
+.sidebar_menu_list{
+    width: 160px;
+    height: 404px;
+}
+    .s_menu_list{
+        width: 132px;
+        margin:auto;
+        padding: 29px 13px 0px 13px;
+        border-top: 1px solid #1DAEDB;
+    }
+        .s_menu_list>li{
+            width: 106px;
+            height: 38px;
+            margin-bottom: 10px;
+            background-color: #5cd8ff;
+            font-size: 12px;
+            color: #ffffff;    
+            overflow: hidden; 
+            box-shadow: 0px 0px 3px #0cb0e3;       
+        }
+            .s_menu_list>li>a{
+                color: #ffffff;
+                display: block;
+            }
+                .s_menu_list>li>a>i{
+                    width: 36px;
+                    height: 38px;
+                    display: inline-block;
+                    line-height: 34px;
+                    text-align: right;
+
+                }
+
+                .s_menu_list>li>a>span{
+                    display: inline-block;
+                    margin-left: 18px;
+                }
+                .s_menu_list>li>a.add_group>i{
+                    width: 29px;
+                    height: 38px;
+                    display: inline-block;
+                    line-height: 34px;
+                    text-align: right;
+                }
+
+                .s_menu_list>li>a.add_group>span{
+                    display: inline-block;
+                    margin-left: 5px;
+                }
+                
+        .s_menu_list>li.active,.s_menu_list>li:hover{
+            background-color: #0cb0e3;
+            box-shadow: 0px 0px 0px #0cb0e3;   
+        }
+            
+/*.sidebar_menu_list*/
+
+/*.sildebar_tools*/
+.sildebar_tools{
+    width: 160px;
+    height: 60px;
+    background-color: #13b4e7;
+    text-align: center;
+    line-height: 60px;
+}
+/*.sildebar_tools*/

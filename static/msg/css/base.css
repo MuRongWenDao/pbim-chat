@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+body { font-family: "微软雅黑";}
+
+img { border: 0px;}
+
+a {  text-decoration: none;}
+
+a:hover {
+    text-decoration: none;
+    color: #18BAF0
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/*共用*/
+.text-center { text-align: center;}
+
+.body-bg {
+    background: #6aa4b8; /*不能渐变的浏览器*/
+    background: -webkit-radial-gradient(#6aa4b8, #5ba2b6, #37829f); /* Safari 5.1 - 6.0 */
+    background: -o-radial-gradient(#6aa4b8, #5ba2b6, #37829f); /* Opera 11.6 - 12.0 */
+    background: -moz-radial-gradient(#6aa4b8, #5ba2b6, #37829f); /* Firefox 3.6 - 15 */
+    background: radial-gradient(#6aa4b8, #5ba2b6, #37829f); /* 标准的语法 */
+}
+.msg_wrap {
+    width: 1000px;
+    margin: 80px auto 0;
+    position: relative;
+    height: 632px;
+    overflow: hidden;
+}
+
+.main_sidebar {
+    width: 160px;
+    min-height: 100%;
+    float: left;
+    background-color: #22beef;
+}
+
+.main_content {
+    width: 840px;
+    min-height: 100%;
+    float: left;
+}
+
+
+
