@@ -368,6 +368,7 @@
 }
 
 .c_area_body > ul > li.other > .msg_content {
+    float: left;
     margin-left: 62px;
     max-width: 260px;
     min-height: 80px;
@@ -381,7 +382,7 @@
 }
 
 .c_area_body > ul > li.other > .msg_content > .msg_text {
-    padding: 10px 15px;
+    padding: 8px 15px;
     background-color: #ffffff;
     border-radius: 5px;
     box-shadow: 0px 0px 3px #888888;
