@@ -167,6 +167,8 @@
 
 .work_group_list > ul > li > .project_area > .project_text {
     float: left;
+    width: 200px;
+    overflow: hidden;
     padding-top: 4px;
     color: #666;
 }
@@ -174,6 +176,8 @@
 .work_group_list > ul > li > .project_area > .project_text > h5 {
     margin: 0px;
     height: 30px;
+    width: 200px;
+    overflow: hidden;
     line-height: 30px;
     font-size: 14px;
     font-weight: 700;

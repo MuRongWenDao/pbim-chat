@@ -120,7 +120,7 @@ function jump_profile(This) {
     } else {
         if ($(This).parent().parent().hasClass("member_list")) {
             //如果是好友，只有一人
-            temp_data = {contact_flag: 1, group_name: "", member_name: "张建龙"};
+            temp_data = {contact_flag: 1, group_name: "", member_name: "杨崇元"};
         } else {
             //如果是讨论组，有多人
             temp_data = {
